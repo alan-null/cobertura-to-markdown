@@ -1,0 +1,19 @@
+name: "cobertura-to-markdown"
+branding:
+  icon: "file-text"
+  color: "white"
+description: "Generate Markdown report from Cobertura coverage.xml file using pycobertura."
+inputs:
+  coverage_file:
+    description: "Path to the coverage.xml file"
+    required: true
+  output_file:
+    description: "Path to save the generated markdown file"
+    required: false
+    default: "output.md"
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - "${{ inputs.coverage_file }}"
+    - "${{ inputs.output_file }}"
